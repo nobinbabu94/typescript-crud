@@ -1,0 +1,13 @@
+.article-header {
+    background-color: cadetblue;
+    color: white;
+    border: 3px solid ;
+    text-align: center;
+
+}
+
+.section-content {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 15px;
+}
