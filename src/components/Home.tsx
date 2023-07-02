@@ -14,6 +14,10 @@ const Home = () => {
   const showEmployeeLlist = () => {
     setShowPage(pageEmum.list);
   };
+
+  const submitedData = (data: EmployeeDetails) => {
+    setEmployee([...employee, data]);
+  };
   return (
     <>
       <article className="article-header">
@@ -25,18 +29,32 @@ const Home = () => {
         {showPage === pageEmum.list && (
           <>
             <h5>Content</h5>
-            <input
-              type="button"
-              value={"add Employee"}
-              onClick={addEmployeeHandler}
-            />
+            <div
+              style={{ display: "flex", justifyContent: "end", width: "100%" }}
+            >
+              <input
+                type="button"
+                value={"Add Employee"}
+                onClick={addEmployeeHandler}
+                style={{
+                  width: "100px",
+                  marginBottom: "10px",
+                  backgroundColor: "cadetblue",
+                  color: "white",
+                  padding: "5px",
+                  border: "5px",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              />
+            </div>
             <EmployeeList list={employee} />
           </>
         )}
         {showPage === pageEmum.add && (
           <AddEmplloyee
-            addEmployeeHandler={addEmployeeHandler}
             showEmployeeLlist={showEmployeeLlist}
+            submitedData={submitedData}
           />
         )}
       </section>
