@@ -1,31 +1,39 @@
-import { useState } from "react";
-import "./AddEmployee.style.css";
 import { EmployeeDetails } from "./Employee.type";
+import "./AddEmployee.style.css";
+import {useState} from 'react'
 
-type props = {
-  showEmployeeLlist: () => void;
-  submitedData: (data: EmployeeDetails) => void;
+
+type Props = {
+    data:EmployeeDetails
+    showEmployeeLlist:()=>void
+    updateData:(data:EmployeeDetails)=>void
 };
-const AddEmplloyee = (props: props) => {
-  const { showEmployeeLlist, submitedData } = props;
 
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+const EditEmployee = (props:Props) => {
+    console.log(props.data)
+    const {data,showEmployeeLlist,updateData} = props
 
+    const [firstName, setFirstname] = useState(data.firstName);
+    const [lastName, setLastName] = useState(data.lastName);
+    const [email, setEmail] = useState(data.email);
+    
+
+    
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const data = {
-      id: new Date().toJSON().toString(),
+    const temp = {
+      id: data.id,
       firstName: firstName,
       lastName: lastName,
       email: email,
     };
-    submitedData(data);
+    updateData(temp);
     showEmployeeLlist();
   };
 
+
   return (
+    <>
     <div className="form">
       <h1>Add Employee</h1>
       <form onSubmit={handleSubmit}>
@@ -55,11 +63,12 @@ const AddEmplloyee = (props: props) => {
         </div>
         <div>
           <button onClick={showEmployeeLlist}>back</button>
-          <button type="submit">Add Employee</button>
+          <button type="submit">Edit Employee</button>
         </div>
       </form>
     </div>
-  );
+    </>
+  )
 };
 
-export default AddEmplloyee;
+export default EditEmployee;

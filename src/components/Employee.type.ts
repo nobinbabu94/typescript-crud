@@ -15,5 +15,5 @@ export const dummyEmployee: EmployeeDetails[] = [
 ];
 
 export enum pageEmum {
-  list,add
+  list,add,edit
 }
